@@ -14,12 +14,16 @@ bcrypt==4.2.0
 
 # Image Processing & Machine Learning
 tensorflow==2.20.0
-numpy==1.26.4
+numpy>=1.26.0,<2.0
 Pillow==10.4.0
 opencv-python==4.11.0.86
 efficientnet==1.1.1
+scikit-image
+h5py
+pandas
 
 # Utilities
 requests==2.32.3
 
 python-dateutil==2.9.0.post0
+
