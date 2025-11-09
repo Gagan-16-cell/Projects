@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CataractAI | Home</title>
+
+    <style>
+      /* === Global Reset === */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(to right, #a7c5eb, #c6e2ff);
+        color: #222;
+        line-height: 1.6;
+      }
+
+      /* === Navbar === */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #004aad;
+        padding: 15px 40px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+      }
+
+      .navbar .logo img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 25px;
+      }
+
+      .nav-links li a {
+        text-decoration: none;
+        color: white;
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links li a:hover {
+        color: #ffe600;
+      }
+
+      /* === Hero Section === */
+      .home-info {
+        max-width: 900px;
+        margin: 130px auto 60px auto;
+        background-color: #ffffff;
+        padding: 50px 40px;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 123, 255, 0.15);
+        text-align: center;
+        animation: fadeIn 1s ease-in-out;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .home-info:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 35px rgba(0, 123, 255, 0.25);
+      }
+
+      .home-info h1 {
+        font-size: 2rem;
+        color: #004aad;
+        margin-bottom: 20px;
+      }
+
+      .home-info p {
+        color: #444;
+        font-size: 1rem;
+        margin-bottom: 25px;
+      }
+
+      .home-info-t-steps {
+        margin-top: 20px;
+      }
+
+      .home-info-t-steps h2 {
+        font-size: 1.6rem;
+        color: #222;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+
+      .home-info-steps h3 {
+        color: #004aad;
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+
+      .home-info-steps p {
+        color: #333;
+        font-size: 1rem;
+        margin-bottom: 20px;
+      }
+
+      /* === Footer === */
+      .footer {
+        text-align: center;
+        background-color: #004aad;
+        color: white;
+        padding: 15px 0;
+        font-size: 0.9rem;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+      }
+
+      .footer a {
+        color: #ffe600;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      /* === Animation === */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* === Responsive === */
+      @media (max-width: 768px) {
+        .navbar {
+          flex-direction: column;
+          gap: 10px;
+          padding: 12px;
+        }
+
+        .nav-links {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .home-info {
+          margin: 140px 20px 60px 20px;
+          padding: 30px 20px;
+        }
+
+        .home-info h1 {
+          font-size: 1.6rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ✅ Navigation Bar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="/">
+          <img
+            src="{{ url_for('static', filename='eye.png') }}"
+            alt="CataractAI Logo"
+          />
+        </a>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="login">Login</a></li>
+        <li><a href="signup_staff">Signup Staff</a></li>
+        <li><a href="signup_patient">Patient Register</a></li>
+      </ul>
+    </nav>
+
+    <!-- ✅ Hero Section -->
+    <div class="home-info">
+      <h1>Detect Cataracts in Seconds with AI Precision!</h1>
+      <p>
+        Harnessing the power of AI to detect cataracts with unparalleled
+        accuracy and speed.
+      </p>
+
+      <div class="home-info-t-steps">
+        <h2>How It Works</h2>
+
+        <div class="home-info-steps">
+          <h3>Step 1</h3>
+          <p>Upload an image of the eye.</p>
+        </div>
+
+        <div class="home-info-steps">
+          <h3>Step 2</h3>
+          <p>Let our AI analyze the image.</p>
+        </div>
+
+        <div class="home-info-steps">
+          <h3>Step 3</h3>
+          <p>Receive accurate results instantly.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ Footer -->
+    <footer class="footer">
+      <p>
+        &copy; 2024 | <a href="#">CataractAI</a> | All Rights Reserved
+      </p>
+    </footer>
+  </body>
+</html>

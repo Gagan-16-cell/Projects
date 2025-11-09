@@ -1,0 +1,343 @@
+/* =========================
+   ✨ Refined Responsive CSS
+   - elegant look & feel
+   - unified animations
+   - fluid responsiveness
+   - subtle micro-interactions
+   ========================= */
+
+/* Reset and base */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background-color: #f9fafb;
+  color: #222;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.55;
+  font-size: 16px;
+  transition: background 0.4s ease;
+}
+
+/* --- Animations --- */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Container helper */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* -----------------------
+   Navigation Bar Styles
+   ----------------------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+  animation: fadeIn 400ms ease both;
+}
+
+.navbar .logo img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(.2, .8, .2, 1);
+}
+.navbar .logo img:hover { transform: scale(1.07); }
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 14px;
+}
+.nav-links a {
+  text-decoration: none;
+  color: #111;
+  font-size: 15px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  transition: all 0.25s cubic-bezier(.2, .85, .2, 1);
+}
+.nav-links a:hover {
+  background: rgba(0,123,255,0.08);
+  color: #007bff;
+  transform: translateY(-2px);
+}
+.nav-links a.button {
+  background: linear-gradient(135deg, #007bff, #005ad6);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 6px 14px rgba(0, 91, 255, 0.16);
+}
+.nav-links a.button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 22px rgba(0, 91, 255, 0.25);
+}
+
+/* Mobile toggle */
+.nav-toggle { display: none; }
+.nav-toggle-label {
+  display: none;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  justify-content: center;
+  align-items: center;
+}
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 18px;
+  background: #111;
+  border-radius: 2px;
+  transition: transform 250ms ease, opacity 250ms ease;
+}
+.nav-toggle-label span::before { transform: translateY(-6px); }
+.nav-toggle-label span::after  { transform: translateY(6px); }
+
+.nav-toggle:checked + .nav-toggle-label span {
+  background: transparent;
+}
+.nav-toggle:checked + .nav-toggle-label span::before {
+  transform: rotate(45deg) translate(4px, 4px);
+}
+.nav-toggle:checked + .nav-toggle-label span::after {
+  transform: rotate(-45deg) translate(4px, -4px);
+}
+
+.mobile-nav { display: none; }
+
+/* -----------------------
+   Login / Signup Boxes
+   ----------------------- */
+.login-container, .signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  margin-top: 80px;
+  padding: 40px 16px;
+  animation: fadeIn 600ms ease both;
+}
+
+.login-box, .signup-box {
+  background: #fff;
+  padding: 40px;
+  border-radius: 14px;
+  box-shadow: 0 8px 36px rgba(10, 20, 60, 0.08);
+  width: 360px;
+  text-align: center;
+  animation: fadeInUp 500ms ease both;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.login-box:hover, .signup-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 44px rgba(0,0,0,0.12);
+}
+
+/* Headings */
+h2 {
+  margin-bottom: 18px;
+  font-size: 22px;
+  color: #111;
+  font-weight: 700;
+}
+
+/* Input group */
+.input-group { margin-bottom: 18px; text-align: left; }
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+.input-group input, .input-group select, .input-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #e0e6ef;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+.input-group input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 4px rgba(0,123,255,0.08);
+}
+
+/* Button */
+.login-button {
+  width: 100%;
+  padding: 12px;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background 250ms ease, transform 150ms ease, box-shadow 250ms ease;
+}
+.login-button:hover {
+  background: #222;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.16);
+}
+
+/* -----------------------
+   Dashboard Layout
+   ----------------------- */
+.dashboard-intro {
+  margin: 120px auto 40px;
+  max-width: 1100px;
+  padding: 40px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 36px rgba(12, 30, 60, 0.08);
+  text-align: center;
+  animation: fadeInUp 520ms ease both;
+}
+.dashboard-intro h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 10px;
+}
+.dashboard-intro p {
+  color: #555;
+  font-size: 17px;
+}
+
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 20px auto 80px;
+  max-width: 1100px;
+  padding: 0 20px;
+  animation: fadeInUp 420ms 120ms ease both;
+}
+
+/* Upload form */
+.upload-form {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: all 0.3s ease;
+}
+.upload-form:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 36px rgba(0,123,255,0.1);
+}
+
+/* Upload input */
+#imageUpload {
+  display: block;
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px dashed rgba(0,123,255,0.28);
+  border-radius: 10px;
+  cursor: pointer;
+  background: #fafbff;
+  transition: background 200ms ease, transform 200ms ease;
+}
+#imageUpload:hover {
+  background: rgba(0,123,255,0.05);
+  transform: translateY(-2px);
+}
+
+.upload-button {
+  background: #007bff;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+.upload-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,123,255,0.2);
+}
+
+/* Footer */
+.footer {
+  background: #111;
+  color: #f1f1f1;
+  text-align: center;
+  padding: 14px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 13px;
+  box-shadow: 0 -4px 18px rgba(0,0,0,0.15);
+}
+.footer a {
+  color: #f1f1f1;
+  font-weight: 600;
+  text-decoration: none;
+}
+.footer a:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+/* -----------------------
+   Responsive
+   ----------------------- */
+@media (max-width: 992px) {
+  .dashboard-content { grid-template-columns: 1fr; gap: 18px; }
+  .dashboard-intro { margin: 110px 16px 24px; padding: 28px; }
+}
+
+@media (max-width: 720px) {
+  .nav-links { display: none; }
+  .nav-toggle-label { display: flex; }
+  .nav-toggle:checked ~ .mobile-nav { display: block; }
+
+  .mobile-nav {
+    position: absolute;
+    top: 64px; right: 16px;
+    width: calc(100% - 32px);
+    background: #fff;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 14px 40px rgba(0,0,0,0.08);
+    animation: fadeIn 300ms ease both;
+  }
+  .mobile-nav a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+  }
+
+  .login-box, .signup-box { width: 100%; padding: 24px; }
+  .dashboard-intro { padding: 20px; }
+}
+
+@media (max-width: 380px) {
+  body { font-size: 15px; }
+  .upload-button, .login-button { font-size: 14px; padding: 10px; }
+}

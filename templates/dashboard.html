@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CataractAI | Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="/">
+          <img
+            src="{{ url_for('static', filename='eye.png') }}"
+            alt="CataractAI Logo"
+          />
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+      </ul>
+    </nav>
+
+    <div class="dashboard-intro">
+      <h1><i class="fas fa-user-md"></i> Welcome, {{name}}!</h1>
+      <p>Upload an Fundus image to analyze for cataracts</p>
+
+      <div class="dashboard-content">
+        <div class="dashboard-left">
+          <!-- Image Upload Form -->
+          <form
+            action="{{ url_for('predict') }}"
+            method="POST"
+            enctype="multipart/form-data"
+            class="upload-form"
+          >
+            <label for="imageUpload" class="upload-label"><i class="fas fa-image"></i> Select an Fundus Image:</label>
+            <input
+              type="file"
+              id="imageUpload"
+              name="image"
+              accept="image/*"
+              required
+            />
+            <button type="submit" class="upload-button"><i class="fas fa-microscope"></i> Upload and Analyze</button>
+          </form>
+        </div>
+        
+        <div class="dashboard-right">
+          <!-- Display Prediction Result -->
+          {% if result %}
+          <div class="result">
+            <h2><i class="fas fa-chart-bar"></i> Analysis Result</h2>
+            <p>{{ result }}</p>
+            
+            <!-- Display the uploaded image -->
+            {% if image_file %}
+            <div class="uploaded-image">
+              <h3><i class="fas fa-eye"></i> Analyzed Image</h3>
+              <img src="{{ url_for('uploaded_file', filename=image_file) }}" alt="Uploaded eye image" />
+            </div>
+            {% endif %}
+          </div>
+          {% else %}
+          <div class="no-result-placeholder">
+            <i class="fas fa-eye-slash"></i>
+            <p>No analysis yet. Upload an image to see results here.</p>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      
+      {% with messages = get_flashed_messages() %} 
+        {% if messages %}
+        <ul>
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %} 
+      {% endwith %}
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+      <p>
+        Copyright &copy; 2024 <span>|</span> by <a href="#">CataractAI</a>
+      </p>
+    </footer>
+  </body>
+</html>

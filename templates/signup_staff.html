@@ -1,0 +1,403 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CataractAI | Staff Signup</title>
+
+    <style>
+      /* ====== Global Styles ====== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #001f3f, #005f99, #007bff);
+        background-size: 400% 400%;
+        animation: gradientFlow 8s ease infinite;
+        color: #fff;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      @keyframes gradientFlow {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* ====== Navbar ====== */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 14px 40px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+      }
+
+      .navbar .logo img {
+        height: 48px;
+        width: 48px;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 25px;
+      }
+
+      .nav-links li a {
+        text-decoration: none;
+        color: #e0f7ff;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links li a:hover {
+        color: #ffde59;
+      }
+
+      /* ====== Signup Container ====== */
+      .signup-container {
+        max-width: 850px;
+        margin: 120px auto 60px auto;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 40px 35px;
+        border-radius: 18px;
+        box-shadow: 0 10px 30px rgba(0, 123, 255, 0.3);
+        backdrop-filter: blur(15px);
+        animation: fadeUp 1.2s ease-in-out;
+      }
+
+      .signup-box h2 {
+        color: #90e0ef;
+        margin-bottom: 30px;
+        font-size: 1.9rem;
+        font-weight: 600;
+      }
+
+      .input-group {
+        margin: 18px 0;
+        text-align: left;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 15px;
+        color: #d6eaff;
+        font-weight: 500;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        font-size: 15px;
+        outline: none;
+        transition: all 0.3s ease;
+      }
+
+      input:focus {
+        border-color: #00b4d8;
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 0 8px rgba(0, 180, 216, 0.4);
+      }
+
+      input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .login-button {
+        background: linear-gradient(135deg, #00b4d8, #007bff);
+        color: white;
+        border: none;
+        padding: 14px 25px;
+        border-radius: 10px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        margin-top: 20px;
+        transition: all 0.3s ease;
+      }
+
+      .login-button:hover {
+        background: linear-gradient(135deg, #0096c7, #0056b3);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+      }
+
+      /* ====== Registered List ====== */
+      .registered-list {
+        margin-top: 45px;
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(12px);
+      }
+
+      .registered-list h3 {
+        color: #90e0ef;
+        margin-bottom: 20px;
+        font-size: 1.4rem;
+        font-weight: 600;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        text-align: center;
+        color: #f1faff;
+        font-size: 0.95rem;
+      }
+
+      th {
+        color: #00b4d8;
+        text-transform: uppercase;
+      }
+
+      tr:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .action-btn {
+        background: #00b4d8;
+        border: none;
+        color: white;
+        padding: 7px 14px;
+        border-radius: 6px;
+        cursor: pointer;
+        margin: 0 4px;
+        font-size: 0.9rem;
+        transition: 0.3s;
+      }
+
+      .action-btn:hover {
+        background: #0077b6;
+      }
+
+      .delete-btn {
+        background: #e63946;
+      }
+
+      .delete-btn:hover {
+        background: #c1121f;
+      }
+
+      /* ====== Footer ====== */
+      .footer {
+        text-align: center;
+        background: rgba(0, 0, 0, 0.4);
+        color: #bde0fe;
+        padding: 15px 0;
+        font-size: 0.9rem;
+        margin-top: 50px;
+        backdrop-filter: blur(10px);
+      }
+
+      /* ====== Animations ====== */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ====== Responsive ====== */
+      @media (max-width: 768px) {
+        .navbar {
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .nav-links {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .signup-container {
+          margin: 140px 20px 60px 20px;
+          padding: 25px;
+        }
+
+        table {
+          font-size: 0.85rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="/">
+          <img
+            src="{{ url_for('static', filename='eye.png') }}"
+            alt="CataractAI Logo"
+          />
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="login">Login</a></li>
+        <li><a href="signup_staff">Signup Staff</a></li>
+        <li><a href="signup_patient">Patient Register</a></li>
+      </ul>
+    </nav>
+
+    <!-- Signup Form -->
+    <div class="signup-container">
+      <div class="signup-box">
+        <h2>Staff Signup</h2>
+        <form id="signupForm">
+          <div class="input-group">
+            <label>Full Name</label>
+            <input type="text" id="name" placeholder="Enter full name" required />
+          </div>
+          <div class="input-group">
+            <label>Email</label>
+            <input type="email" id="email" placeholder="Enter email" required />
+          </div>
+          <div class="input-group">
+            <label>Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Create password"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label>Staff Role</label>
+            <input
+              type="text"
+              id="role"
+              placeholder="Enter role (Doctor, Nurse, etc.)"
+              required
+            />
+          </div>
+          <button type="submit" class="login-button">Register Staff</button>
+        </form>
+      </div>
+
+      <!-- Registered Staff -->
+      <div class="registered-list" id="registeredList" style="display: none;">
+        <h3>Registered Staff</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="staffTable"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>&copy; 2024 | CataractAI | All Rights Reserved</p>
+    </footer>
+
+    <script>
+      const form = document.getElementById("signupForm");
+      const listContainer = document.getElementById("registeredList");
+      const tableBody = document.getElementById("staffTable");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const role = document.getElementById("role").value.trim();
+
+        if (!name || !email || !password || !role) {
+          alert("Please fill all fields!");
+          return;
+        }
+
+        const now = new Date();
+        const date = now.toLocaleDateString();
+        const time = now.toLocaleTimeString();
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${name}</td>
+          <td>${email}</td>
+          <td>${role}</td>
+          <td>${date}</td>
+          <td>${time}</td>
+          <td>
+            <button class="action-btn edit-btn">Edit</button>
+            <button class="action-btn delete-btn">Delete</button>
+          </td>
+        `;
+        tableBody.appendChild(row);
+        listContainer.style.display = "block";
+
+        form.reset();
+      });
+
+      tableBody.addEventListener("click", function (e) {
+        if (e.target.classList.contains("delete-btn")) {
+          e.target.closest("tr").remove();
+        }
+
+        if (e.target.classList.contains("edit-btn")) {
+          const row = e.target.closest("tr");
+          const cells = row.querySelectorAll("td");
+
+          const newName = prompt("Edit Name:", cells[0].textContent);
+          const newEmail = prompt("Edit Email:", cells[1].textContent);
+          const newRole = prompt("Edit Role:", cells[2].textContent);
+
+          if (newName && newEmail && newRole) {
+            cells[0].textContent = newName;
+            cells[1].textContent = newEmail;
+            cells[2].textContent = newRole;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
